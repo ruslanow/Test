@@ -1,4 +1,5 @@
 
+const SET_NOTES = 'SET_NOTES'
 const ADD_POST = 'ADD_POST'
 const DELETE_POST = 'DELETE_POST'
 const UPDATE_POST = 'UPDATE_POST'
@@ -23,7 +24,7 @@ let initialState = {
 const PostsReducer = (state = initialState, action) => {
 
 
-    debugger
+
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -56,6 +57,9 @@ const PostsReducer = (state = initialState, action) => {
 
             return state;
 
+        case SET_NOTES:
+            return {...state, posts: action.posts}
+
         case UPDATE_POST_TITLE:
             return {
                 ...state, newTextTitle: action.newTextTitle, currentUser: action.currentUser
@@ -78,6 +82,7 @@ const PostsReducer = (state = initialState, action) => {
 
 export default PostsReducer;
 
+export const setNotesAC = (notes) => ({type: SET_NOTES, notes})
 export const addPostAC = () => ({type: ADD_POST})
 export const deletePostAC = (id) => ({type: DELETE_POST, id})
 export const updatePostAC = (id) => ({type: UPDATE_POST, id})

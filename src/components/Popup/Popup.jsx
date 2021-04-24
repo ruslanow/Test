@@ -24,7 +24,7 @@ let Popup = (props) => {
         props.updatePostTextBody(t)
     }
 
-    debugger
+
     return (props.popupTrigger) ? (
 
         <div className={styles.popup}>

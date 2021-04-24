@@ -2,7 +2,14 @@ import React from 'react';
 import {connect} from "react-redux";
 import Posts from "./Posts";
 import * as axios from "axios";
-import {addPostAC, deletePostAC, updatePostAC, updatePostTextBody, updatePostTextTitle} from "../../redux/PostsReducer";
+import {
+    addPostAC,
+    deletePostAC,
+    setNotesAC,
+    updatePostAC,
+    updatePostTextBody,
+    updatePostTextTitle
+} from "../../redux/PostsReducer";
 
 
 let mapStateToProps = (state) => {
@@ -18,10 +25,12 @@ let mapStateToProps = (state) => {
 class PostsContainer extends React.Component {
 
     componentDidMount() {
-/*        axios.get(`https://social-network.samuraijs.com/api/1.0/users?`)
+        debugger
+        axios.get(`https://raw.githubusercontent.com/ruslanow/Test/master/ds.json`)
             .then(response => {
-                this.props.setUsers(response.data.items);
-            })*/
+                /*this.props.setNotesAC(response.posts);*/
+                console.log(response.data.posts)
+            })
     }
 
     render() {
@@ -33,5 +42,5 @@ class PostsContainer extends React.Component {
 }
 
 
-export default connect(mapStateToProps, { addPostAC, deletePostAC, updatePostAC,
+export default connect(mapStateToProps, { setNotesAC, addPostAC, deletePostAC, updatePostAC,
                                                          updatePostTextTitle, updatePostTextBody, })(PostsContainer);
