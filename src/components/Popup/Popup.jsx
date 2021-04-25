@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Popup.module.sass'
 import {deletePostAC} from "../../redux/PostsReducer";
+import {NavLink} from "react-router-dom";
 
 
 let Popup = (props) => {
@@ -50,14 +51,14 @@ let Popup = (props) => {
                                  onClick={() => {
                                      props.postsTrigger ? props.addPostAC() && props.setTrigger(false) : props.updatePostAC(props.id) && props.setTrigger(false)
                                  }}>
-                            Save
+                            <NavLink to = '/posts' className={styles.link}>Save</NavLink>
                         </button>
 
                         <button className={`btn btn-danger ${styles.notesButtonsItem}`}
                                 onClick={() => {
                                      props.deletePostAC(props.id) && props.setTrigger(false)
                                 }}>
-                            Delete
+                            <NavLink to = '/posts' className={styles.link}>Delete</NavLink>
                         </button>
                     </div>
 

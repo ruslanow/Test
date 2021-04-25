@@ -24,7 +24,7 @@ let initialState = {
 const PostsReducer = (state = initialState, action) => {
 
 
-
+    debugger
     switch (action.type) {
         case ADD_POST:
             let newPost = {
@@ -58,7 +58,7 @@ const PostsReducer = (state = initialState, action) => {
             return state;
 
         case SET_NOTES:
-            return {...state, posts: action.posts}
+            return {...state, posts: action.notes}
 
         case UPDATE_POST_TITLE:
             return {
@@ -70,10 +70,9 @@ const PostsReducer = (state = initialState, action) => {
             }
         case DELETE_POST:
             let searchName = action.id;
-            console.log(searchName)
             let index = state.posts.map(el => el.id).indexOf(searchName);
             state.posts.splice(index, 1);
-            return state
+            return {...state, posts: [...state.posts]}
 
         default:
             return state;

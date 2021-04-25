@@ -2,28 +2,66 @@
   position: fixed
   top: 0
   left: 0
-  width: 100%
-  height: 100vh
-  background-color: rgba(0, 0, 0, 0.2)
 
-  display: flex
-  justify-content: center
-  align-self: center
-  align-content: center
+  display: inline-block
+
+
+  width: 100%
+  min-height: 100vh
+  height: auto
+  background-color: rgba(0, 0, 0, 0.2)
 
   z-index: 5
 
 .inner
-  position: relative
   padding: 1em
-  margin-top: 10em
+  margin: 1em auto 0
   width: 100%
-  height: 35em
+  min-height: 35em
+  height: auto
+
   max-width: 55em
   background-color: #fff
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.114), 0 4px 8px rgba(0, 0, 0, 0.114), 0 4px 8px rgba(0, 0, 0, 0.114), 0 4px 8px rgba(0, 0, 0, 0.114)
   border-radius: 9px
 
+  display: flex
+  align-items: center
+  justify-content: center
+  align-content: flex-start
+  flex-direction: column
+  overflow: hidden
+
+
+.button
+  width: 12em
+  margin-top: 1em
+  background-color: white
+  border: 1px solid black
+
+
+
+.content
+  position: relative
+  display: inline-block
+  padding: 3em
+  background-color: #eeeeee
+  margin: 1em
+
+
+
+.wrapper
+  vertical-align: top
+  top: 10px
+
+
+.title
+  font-size: 46px
+  font-weight: bold
+
+.body
+  font-size: 36px
+  font-weight: 400
 
 .notesButtonsItem
   margin: 0.1em
@@ -33,8 +71,7 @@
 .box
   display: flex
   flex-direction: column
-  justify-content: space-between
-  align-content: space-between
+  align-content: flex-start
   height: 100%
 
 .titleArea
@@ -43,6 +80,7 @@
   height: auto
   max-height: 4em
   margin-bottom: 0.4em
+
 .bodyArea
   resize: none
   width: 100%
