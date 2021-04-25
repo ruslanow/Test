@@ -29,7 +29,10 @@ class CommentsCContainer extends React.Component {
         debugger
         axios.get(`https://raw.githubusercontent.com/ruslanow/Test/master/ds.json`)
             .then(response => {
-                this.props.setCommentsDataAC(response.data.posts)
+                debugger
+                this.props.setCommentsDataAC(response.data.posts.comments)
+                console.log(response)
+                console.log('asdasdas')
             })
             .catch(error => {
                 console.log(error.response)

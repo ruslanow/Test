@@ -40,7 +40,7 @@ let Posts = (props) => {
 
             { props.posts ?
                 props.posts.map(p => {
-debugger
+
                     return <div className={styles.box} onClick={() => {
                         setButtonViewerPopup(true)
                         setPostsTrigger(false)

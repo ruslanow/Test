@@ -15,7 +15,7 @@ let initialState = {
 
 
 const addPostReducer = (state=initialState, action) => {
-    debugger
+
     switch (action.type) {
         case ADD_COMMENT:
             let newComment = {

@@ -27,7 +27,7 @@ class PostsContainer extends React.Component {
 
 
     componentDidMount() {
-        debugger
+
         axios.get(`https://raw.githubusercontent.com/ruslanow/Test/master/ds.json`)
             .then(response => {
                 this.props.setNotesAC(response.data.posts)

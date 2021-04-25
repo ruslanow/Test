@@ -19,7 +19,7 @@ const CommentsItem = (props) => {
         props.addPostAC()
     }
 
-debugger
+
     return (
         <div>
             <div className={styles.block}>

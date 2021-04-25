@@ -3,42 +3,36 @@
     {
       "id": 1,
       "title": "hello",
-      "body": "1st Body Message Message Message",
-      "comments": [
-        {"id": 1, "postId": 100, "text": "H1"},
-        {"id": 1, "postId": 102, "text": "H2"},
-        {"id": 1, "postId": 103, "text": "H3"}
-      ]
+      "body": "1st Body Message Message Message"
     },
     {
       "id": 2,
       "title": "hello1",
-      "body": "2st Body Message Message Message",
-      "comments": [
-        {"id": 2, "postId": 104, "text": "H1"},
-        {"id": 2, "postId": 105, "text": "H2"},
-        {"id": 2, "postId": 106, "text": "H3"}
-      ]
+      "body": "2st Body Message Message Message"
     },
     {
       "id": 3,
       "title": "hello2",
-      "body": "3st Body Message Message Message",
-      "comments": [
-        {"id": 3, "postId": 107, "text": "H1"},
-        {"id": 3, "postId": 108, "text": "H2"},
-        {"id": 3, "postId": 109, "text": "H3"}
-      ]
+      "body": "3st Body Message Message Message"
     },
     {
       "id": 4,
       "title": "hello3",
-      "body": "4st Body Message Message Message",
-      "comments": [
-        {"id": 4, "postId": 110, "text": "H1"},
-        {"id": 4, "postId": 111, "text": "H2"},
-        {"id": 4, "postId": 112, "text": "H3"}
-      ]
+      "body": "4st Body Message Message Meage"
     }
+  ],
+  "comments": [
+    {"id": 2, "postId": 104, "text": "H1"},
+    {"id": 2, "postId": 105, "text": "H2"},
+    {"id": 2, "postId": 106, "text": "H3"},
+    {"id": 3, "postId": 107, "text": "H4"},
+    {"id": 3, "postId": 108, "text": "H5"},
+    {"id": 3, "postId": 109, "text": "H6"},
+    {"id": 4, "postId": 110, "text": "H7"},
+    {"id": 4, "postId": 111, "text": "H8"},
+    {"id": 4, "postId": 112, "text": "H9"},
+    {"id": 5, "postId": 113, "text": "H0"},
+    {"id": 5, "postId": 114, "text": "H11"},
+    {"id": 5, "postId": 115, "text": "H12"}
   ]
 }
