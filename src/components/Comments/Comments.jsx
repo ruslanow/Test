@@ -12,13 +12,9 @@ const CommentsItem = (props) => {
 
     let onPostChange = () => {
         let t = newPostElement.current.value;
-        props.onCommentChangeAC(t)
+        props.onCommentChangeAC(t, props.id)
     }
-
-    let addPost = () => {
-        props.addPostAC()
-    }
-
+debugger
 
     return (
         <div>
@@ -26,29 +22,41 @@ const CommentsItem = (props) => {
                 <div className={styles.profileInfo}>
                     <img src='' width="40px" height="40px" alt=""/>
                     <div className={styles.name}>
-                        <h2>{props.name}</h2>
+                        <h4>admin</h4>
                     </div>
                 </div>
 
-                { isEditing ?
-
+                {isEditing ?
+                    <>
                     <textarea ref={newPostElement} value={props.text}
                               placeholder="Enter message..." onChange={onPostChange}
                               className={`form-control form-control-lg ${styles.titleArea}`}/>
+                        <div className={styles.buttons}>
+                            <img src={pic1} width='22em' alt="" className={styles.editPost} onClick={() => {
+                                setIsEditing(false)
+                            }}/>
+                            <img src={pic2} width='22em' alt="" className={styles.deletePost} onClick={() => {
+                                props.deleteCommentAC(props.postId)
+                            }}/>
+                        </div>
+                    </>
                     :
-                    <div className={styles.message}>
-                        <h3>{props.text}</h3>
-                    </div>
+                    <>
+                        <div className={styles.message}>
+                            <h3>{props.text}</h3>
+                        </div>
+                        <div className={styles.buttons}>
+                            <img src={pic1} width='22em' alt="" className={styles.editPost} onClick={() => {
+                                setIsEditing(true)
+                            }}/>
+                            <img src={pic2} width='22em' alt="" className={styles.deletePost} onClick={() => {
+                                props.deleteCommentAC(props.postId)
+                            }}/>
+                        </div>
+                    </>
                 }
 
-                <div className={styles.buttons}>
-                    <img src={pic1} width='22em' alt="" className={styles.editPost} onClick={() => {
-                        setIsEditing(true)
-                    }}/>
-                    <img src={pic2} width='22em' alt="" className={styles.deletePost} onClick={() => {
-                        props.deleteCommentAC(props.postId)
-                    }}/>
-                </div>
+
             </div>
 
         </div>
@@ -58,15 +66,15 @@ const CommentsItem = (props) => {
 const Comments = (props) => {
 
     let postElement = props.commentsData
-        .map(p => <CommentsItem name={p.name} deleteCommentAC={props.deleteCommentAC} postId={p.postId} key={p.id}
-                                text={p.text} onCommentChangeAC={props.onCommentChangeAC}/>);
+        .map(p => <CommentsItem name={p.name} deleteCommentAC={props.deleteCommentAC} postId={p.postId} id={p.id} key={p.id}
+                                text={p.body} onCommentChangeAC={props.onCommentChangeAC}/>);
 
     let newPostElement =
         React.createRef();
 
     let onPostChange = () => {
         let t = newPostElement.current.value;
-        props.onCommentChangeAC(t)
+        props.onPostChangeAC(t)
     }
 
     let addPost = () => {

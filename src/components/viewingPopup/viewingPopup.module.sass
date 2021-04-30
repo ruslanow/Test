@@ -7,15 +7,15 @@
 
 
   width: 100%
-  min-height: 100vh
-  height: auto
+  max-height: 100vh
+  height: 100%
   background-color: rgba(0, 0, 0, 0.2)
-
+  overflow-y: auto
   z-index: 5
 
 .inner
   padding: 1em
-  margin: 1em auto 0
+  margin: 4em auto
   width: 100%
   min-height: 35em
   height: auto
@@ -30,7 +30,11 @@
   justify-content: center
   align-content: flex-start
   flex-direction: column
-  overflow: hidden
+  overflow-y: auto
+  z-index: 10
+
+
+
 
 
 .button
@@ -73,6 +77,7 @@
   flex-direction: column
   align-content: flex-start
   height: 100%
+  z-index: 10
 
 .titleArea
   resize: none

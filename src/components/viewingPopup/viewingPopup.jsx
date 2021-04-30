@@ -1,17 +1,19 @@
 import React from 'react';
 import styles from './viewingPopup.module.sass'
 import CommentsContainer from "../Comments/CommentsContainer";
+import {NavLink} from "react-router-dom";
+
 
 let ViewingPopup = (props) => {
 
 
-
     return (props.popupTrigger) ? (
-
         <div className={styles.popup}>
             <div className={styles.inner}>
                 <div className={styles.box}>
+                    <NavLink to='/posts'>
                     <button className={`btn ${styles.button}`} onClick={() => {props.setTrigger(false)}}>close</button>
+                    </NavLink>
 
                     <div className={styles.content}>
                         <div className={styles.title}>

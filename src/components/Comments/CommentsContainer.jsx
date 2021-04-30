@@ -3,8 +3,16 @@ import {connect} from "react-redux";
 import './Comments.module.sass';
 
 import Comments from "./Comments";
-import {addPostAC, deleteCommentAC, onCommentChangeAC, setCommentsDataAC} from "../../redux/CommentsReducer";
+import {
+    addPostAC,
+    deleteCommentAC,
+    onCommentChangeAC,
+    onPostChangeAC,
+    setCommentsDataAC
+} from "../../redux/CommentsReducer";
 import * as axios from "axios";
+import {setInitialIdAC} from "../../redux/PostsReducer";
+import {withRouter} from "react-router";
 
 let mapStateToProps = (state) => {
     return {
@@ -13,7 +21,7 @@ let mapStateToProps = (state) => {
     };
 };
 
-class CommentsCContainer extends React.Component {
+class CommentsContainer extends React.Component {
 
 /*    componentDidMount() {
         let userId = this.props.match.params.userId;
@@ -26,20 +34,29 @@ class CommentsCContainer extends React.Component {
             });
     }*/
     componentDidMount() {
+
         debugger
-        axios.get(`https://raw.githubusercontent.com/ruslanow/Test/master/ds.json`)
+        let postId = this.props.match.params.postId;
+        if (!postId) {
+            postId = 2;
+        }
+        console.log(postId)
+
+
+        axios.get(`https://jsonplaceholder.typicode.com/comments`)
             .then(response => {
                 debugger
-                this.props.setCommentsDataAC(response.data.posts.comments)
-                console.log(response)
-                console.log('asdasdas')
+                this.props.setCommentsDataAC(response.data)
             })
             .catch(error => {
                 console.log(error.response)
             })
+
+        document.body.style.overflow = 'hidden';
     }
-
-
+    componentWillUnmount() {
+        document.body.style.overflow = 'unset';
+    }
     render() {
         return (
             <Comments {...this.props}/>
@@ -47,6 +64,7 @@ class CommentsCContainer extends React.Component {
     }
 }
 
+let WithUrlDataContainerComponent = withRouter(CommentsContainer);
 
-export default connect(mapStateToProps, {addPostAC, onCommentChangeAC, deleteCommentAC, setCommentsDataAC })(CommentsCContainer);
+export default connect(mapStateToProps, {addPostAC, onCommentChangeAC, onPostChangeAC, deleteCommentAC, setCommentsDataAC, setInitialIdAC })(WithUrlDataContainerComponent);
 

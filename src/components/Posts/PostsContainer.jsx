@@ -10,6 +10,7 @@ import {
     updatePostTextBody,
     updatePostTextTitle
 } from "../../redux/PostsReducer";
+import {withRouter} from "react-router";
 
 
 let mapStateToProps = (state) => {
@@ -24,29 +25,45 @@ let mapStateToProps = (state) => {
 
 class PostsContainer extends React.Component {
 
-
+    urlParams = false
 
     componentDidMount() {
+        let postId = this.props.match.params.userId;
+        if (!postId) {
+            postId = null;
+        } else { this.urlParams = true }
 
-        axios.get(`https://raw.githubusercontent.com/ruslanow/Test/master/ds.json`)
+        axios.get(`https://jsonplaceholder.typicode.com/posts`)
             .then(response => {
-                this.props.setNotesAC(response.data.posts)
+                this.props.setNotesAC(response.data)
+                console.log(response)
             })
             .catch(error => {
                 console.log(error.response)
             })
+    }
 
+    deletePostRequest = (postId) => {
+        axios.delete('https://jsonplaceholder.typicode.com/posts/'+postId)
+            .then(response => {
+                if(response.data != null){
+                    console.log('OK')
+                }
+            })
     }
 
     render() {
 
         return (
-            <Posts {...this.props}  />
+            <Posts {...this.props} deletePostRequest={this.deletePostRequest} isUrlEdited={this.isUrlEdited} />
         )
     }
 
 }
 
 
+let WithUrlDataContainerComponent = withRouter(PostsContainer);
+
+
 export default connect(mapStateToProps, { setNotesAC, addPostAC, deletePostAC, updatePostAC,
-                                                         updatePostTextTitle, updatePostTextBody, })(PostsContainer);
+                                                         updatePostTextTitle, updatePostTextBody})(WithUrlDataContainerComponent);

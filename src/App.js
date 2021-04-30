@@ -8,7 +8,8 @@ function App(props) {
       <BrowserRouter>
 
         <div id = "main__intro">
-            <Route path='/posts' component = {PostsContainer}/>
+            <Route exact path='/posts' component = {PostsContainer}/>
+            <Route exact path='/posts/:postId' component = {PostsContainer}/>
             <Route exact path='/' component = {MainPage}/>
 
         </div>

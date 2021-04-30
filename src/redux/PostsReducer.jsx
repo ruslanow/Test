@@ -1,5 +1,6 @@
 
 const SET_NOTES = 'SET_NOTES'
+const SET_INITIAL_ID = 'SET_INITIAL_ID'
 const ADD_POST = 'ADD_POST'
 const DELETE_POST = 'DELETE_POST'
 const UPDATE_POST = 'UPDATE_POST'
@@ -10,14 +11,14 @@ const UPDATE_POST_BODY = 'UPDATE_POST_BODY'
 
 let initialState = {
     posts: [
-        {id: 1, title: "1", body: "1st Body Message Message Message"},
-        {id: 2, title: "2", body: "2nd Body Message Message Message"},
-        {id: 3, title: "3", body: "3rd Body Message Message Message"},
+        {userId: 2, id: 1, title: "1", body: "1st Body Message Message Message"},
+        {userId: 3, id: 2, title: "2", body: "2nd Body Message Message Message"},
+        {userId: 4, id: 3, title: "3", body: "3th Body Message Message Message"},
+        {userId: 5, id: 4, title: "4", body: "5th Body Message Message Message"},
 ],
-    newTextTitle: 'There is will be message',
-    newTextBody: '1',
-    currentUser: '1',
-    id: 3
+    newTextTitle: '',
+    newTextBody: '',
+    currentUser: '',
 }
 
 
@@ -28,7 +29,7 @@ const PostsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                id: state.id + 1,
+                id: {...state.posts.length ? state.posts[state.posts.length - 1].id + 1 : 1},
                 title: state.newTextTitle,
                 body: state.newTextBody
             }
@@ -39,40 +40,46 @@ const PostsReducer = (state = initialState, action) => {
                 id: newPost.id,
                 posts: [...state.posts, newPost]
             }
-        /*            if ( newPost.title.length === 0 || !newPost.title.trim() ||
-                        newPost.newTextBody.length === 0 || !newPost.newTextBody.trim() ) { return state; }
-                    else {
-                        return {
-                            ...state,
-                            newTextTitle: '',
-                            newTextBody: '',
-                            posts: [...state.posts, newPost]
-                        }
-                    }*/
+
+
+
 
         case UPDATE_POST:
-            let item = state.posts.find(x => x.id === state.currentUser);
-            item.title = state.newTextTitle;
-            item.body = state.newTextBody;
 
-            return state;
+
+            return {...state, posts: [ ...state.posts.map(p => {
+                if (p.id === action.id) {
+                    p.body = state.newTextBody;
+                    p.title = state.newTextTitle
+                    return p } else{
+                    return p
+                }
+                })]}
+
+
+/*
+            return {...state, posts: [...state.posts] }
+*/
+
+
 
         case SET_NOTES:
             return {...state, posts: action.notes}
 
         case UPDATE_POST_TITLE:
             return {
-                ...state, newTextTitle: action.newTextTitle, currentUser: action.currentUser
+                ...state,  newTextTitle: action.newTextTitle, currentUser: action.currentUser
             }
         case UPDATE_POST_BODY:
             return {
                 ...state, newTextBody: action.newTextBody
             }
+
         case DELETE_POST:
-            let searchName = action.id;
-            let index = state.posts.map(el => el.id).indexOf(searchName);
-            state.posts.splice(index, 1);
-            return {...state, posts: [...state.posts]}
+
+            return {...state, posts: [...state.posts.filter(p => {
+                    return p.id !== action.id
+                })]}
 
         default:
             return state;
@@ -83,6 +90,7 @@ export default PostsReducer;
 
 export const setNotesAC = (notes) => ({type: SET_NOTES, notes})
 export const addPostAC = () => ({type: ADD_POST})
+export const setInitialIdAC = () => ({type: SET_INITIAL_ID})
 export const deletePostAC = (id) => ({type: DELETE_POST, id})
 export const updatePostAC = (id) => ({type: UPDATE_POST, id})
 export const updatePostTextTitle = (t, id) => ({type: UPDATE_POST_TITLE, newTextTitle: t, currentUser: id})
