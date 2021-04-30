@@ -5,9 +5,7 @@ const ON_COMMENT_CHANGE = 'ON_COMMENT_CHANGE'
 const ON_POST_CHANGE = 'ON_POST_CHANGE'
 
 let initialState = {
-    commentsData: [
-        { postId: 100, id: 1, name: null, email: null, body: 'asdasdasd'}
-    ],
+    commentsData: [],
     newTexMessage: '',
     editTexMessage: '',
     commentCounter: 115
@@ -33,7 +31,7 @@ const addPostReducer = (state=initialState, action) => {
                     ...state,
                     newTexMessage: '',
                     commentCounter: state.commentCounter + 1,
-                    commentsData: [...state.commentsData,newComment ]}
+                    commentsData: [newComment ,...state.commentsData ]}
             }
         case  ON_POST_CHANGE : {
             return {

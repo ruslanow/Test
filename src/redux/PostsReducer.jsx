@@ -11,10 +11,6 @@ const UPDATE_POST_BODY = 'UPDATE_POST_BODY'
 
 let initialState = {
     posts: [
-        {userId: 2, id: 1, title: "1", body: "1st Body Message Message Message"},
-        {userId: 3, id: 2, title: "2", body: "2nd Body Message Message Message"},
-        {userId: 4, id: 3, title: "3", body: "3th Body Message Message Message"},
-        {userId: 5, id: 4, title: "4", body: "5th Body Message Message Message"},
 ],
     newTextTitle: '',
     newTextBody: '',
