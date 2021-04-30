@@ -43,8 +43,8 @@ let Posts = (props) => {
                         props.updatePostTextTitle(p.title, p.id)
                         props.updatePostTextBody(p.body)
                         stopPropagation(event)
+                        debugger
                     }} key={p.id}>
-                        <NavLink to={`/posts/${p.id}`} className={styles.link}>
                             <div className={styles.content}>
                                 <div className={styles.title}>
                                     <h2> {p.title} </h2>
@@ -73,7 +73,6 @@ let Posts = (props) => {
                                     <img src={pic1} width='20em' alt=""/>
                                 </button>
                             </div>
-                        </NavLink>
                     </div>
 
                 }) : null

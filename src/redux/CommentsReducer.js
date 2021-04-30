@@ -75,7 +75,6 @@ const addPostReducer = (state=initialState, action) => {
 
 
         case SET_COMMENTS:
-            console.log(action.commentsData, 'its data')
             return {...state, commentsData: action.commentsData}
         default:
             return state;

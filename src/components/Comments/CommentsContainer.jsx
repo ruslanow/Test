@@ -40,7 +40,6 @@ class CommentsContainer extends React.Component {
         if (!postId) {
             postId = 2;
         }
-        console.log(postId)
 
 
         axios.get(`https://jsonplaceholder.typicode.com/comments`)

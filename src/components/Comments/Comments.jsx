@@ -14,7 +14,7 @@ const CommentsItem = (props) => {
         let t = newPostElement.current.value;
         props.onCommentChangeAC(t, props.id)
     }
-debugger
+
 
     return (
         <div>

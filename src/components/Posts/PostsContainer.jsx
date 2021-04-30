@@ -36,7 +36,6 @@ class PostsContainer extends React.Component {
         axios.get(`https://jsonplaceholder.typicode.com/posts`)
             .then(response => {
                 this.props.setNotesAC(response.data)
-                console.log(response)
             })
             .catch(error => {
                 console.log(error.response)
